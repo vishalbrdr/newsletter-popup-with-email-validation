@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsletter Popup</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="header">
+          <h1 class="heading">
+            Creating email templates has never been easier.
+          </h1>
+        </div>
+        <div class="main">
+          <h2>
+            Recieve daily emails on how to best create email templates,
+            completely free.
+          </h2>
+          <form class="form">
+            <div class="input-group">
+              <input type="text" placeholder="Email Address" />
+              <button class="" type="submit">Subscribe</button>
+            </div>
+            <p>No spam, ever. Unsubscribe anytime.</p>
+          </form>
+        </div>
+        <div class="footer">
+          <div class="user">
+            <img src="./Assets/User Avatar.svg" alt="user-pic" />
+            <div class="user-name">
+              <h2>Andrew Vickins</h2>
+              <span>Newsletter Designer</span>
+            </div>
+          </div>
+          <p class="quote">
+            "By far one of the best newsletter i've ever subscribed to. It is
+            sent biweekly and i'm always looking forward to their emails."
+          </p>
+        </div>
+      </div>
+    </main>
+    <script>
+      document.querySelector("form").addEventListener("submit", (e) => {
+        if (
+          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+            document.querySelector("input").value
+          )
+        ) {
+          e.preventDefault();
+          document.querySelector("button").classList.add("subscribed");
+          setTimeout(function () {
+            document.querySelector("button").classList.remove("subscribed");
+          }, 2000);
+          document.querySelector("input").value = "";
+        } else {
+          e.preventDefault();
+          document.querySelector("input").classList.add("error");
+          document.querySelector(".error").value = "Invalid email address";
+        }
+      });
+      document.querySelector("input").addEventListener("click", () => {
+        document.querySelector(".error").value = "";
+        document.querySelector("input").classList.remove("error");
+        document.querySelector("button").classList.remove("subscribed");
+      });
+    </script>
+  </body>
+</html>
